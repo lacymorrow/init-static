@@ -211,6 +211,6 @@ module.exports = function(grunt) {
   grunt.registerTask('static', ['copy', 'imagemin']);
   grunt.registerTask('dist', ['clean', 'js', 'css', 'static']);
   grunt.registerTask('serve', ['dist','express', 'open', 'watch']);
-  grunt.registerTask('all', ['assets','test','dist']);
+  grunt.registerTask('build', ['assets','test','dist']);
   grunt.registerTask('default', ['dist']);
 };
