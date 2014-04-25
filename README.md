@@ -1,4 +1,4 @@
-# lacymorrow
+# Init-Static
 
 An optimized package and gruntfile for rapidly spooling up a static Bootstrap website.
 
