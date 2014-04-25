@@ -1,0 +1,14 @@
+/*!
+ * init-static v0.1.0 (http://lacymorrow.com)
+ * Copyright 2014-2014 lacymorrow <me@lacymorrow.com>
+ * Licensed under MIT ()
+ */
+
+body {
+  padding-top: 50px;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}

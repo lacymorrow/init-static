@@ -70,15 +70,15 @@ module.exports = function(grunt) {
         stripBanners: false
       },
       css: {
-        src: ['dist/css/init.css', 'src/css/**/*.css'],
-        dest: 'dist/css/init.css'
+        src: ['dist/css/style.css', 'src/css/**/*.css'],
+        dest: 'dist/css/style.css'
       },
       js: {
         options: {
           banner: '<%= banner %>\n<%= jqueryCheck %>\n'
         },
         src: ['src/js/**/*.js'],
-        dest: 'dist/js/init.js'
+        dest: 'dist/js/main.js'
       }
     },
     connect: {
@@ -99,7 +99,14 @@ module.exports = function(grunt) {
     csscomb: {
       dist: {
         files: {
-          'dist/css/init.css': 'dist/css/init.css'
+          'dist/css/style.css': 'dist/css/style.css'
+        }
+      }
+    },
+    cssflip: {
+      rtl: {
+        files: {
+          'dist/css/style-rtl.css': 'dist/css/style.css'
         }
       }
     },
@@ -119,7 +126,7 @@ module.exports = function(grunt) {
           'dist/css/*.css',
           '!*.min.css'
         ],
-        dest: 'dist/css/init.min.css'
+        dest: 'dist/css/style.min.css'
       }
     },
     express: {
@@ -168,7 +175,7 @@ module.exports = function(grunt) {
           cleancss: true,
         },
         files: {
-          "dist/css/init.css": "src/less/*.less"
+          "dist/css/style.css": "src/less/*.less"
         }
       }
     },
@@ -194,7 +201,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/js/init.min.js': ['<%= concat.js.dest %>']
+          'dist/js/main.min.js': ['<%= concat.js.dest %>']
         }
       }
     },
@@ -207,7 +214,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('assets', ['exec', 'copy']);
   grunt.registerTask('js', ['concat:js', 'uglify']);
-  grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssmin']);
+  grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
   grunt.registerTask('static', ['copy', 'imagemin']);
   grunt.registerTask('dist', ['clean', 'js', 'css', 'static']);
   grunt.registerTask('serve', ['dist','express', 'open', 'watch']);
