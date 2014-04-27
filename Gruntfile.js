@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         },
     },
     clean: {
-      dist: 'dist/*'
+      dist: 'dist/**/*'
     },
     concat: {
       options: {
@@ -211,13 +211,12 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('test', ['jshint']);
   grunt.registerTask('assets', ['exec', 'copy']);
-  grunt.registerTask('js', ['concat:js', 'uglify']);
+  grunt.registerTask('js', ['jshint', 'concat:js', 'uglify']);
   grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
   grunt.registerTask('static', ['copy', 'imagemin']);
-  grunt.registerTask('dist', ['clean', 'js', 'css', 'static']);
+  grunt.registerTask('dist', ['js', 'css', 'static']);
   grunt.registerTask('serve', ['dist','express', 'open', 'watch']);
-  grunt.registerTask('build', ['assets','test','dist']);
+  grunt.registerTask('build', ['clean', 'assets','test','dist']);
   grunt.registerTask('default', ['dist']);
 };
