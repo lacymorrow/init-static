@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         dist: {
           expand: true,
           flatten: true,
-          src: 'dist/css/*.css',
+          src: 'dist/css/init.css',
           dest: 'dist/css/'
         },
     },
@@ -70,15 +70,15 @@ module.exports = function(grunt) {
         stripBanners: false
       },
       css: {
-        src: ['dist/css/style.css', 'src/css/**/*.css'],
-        dest: 'dist/css/style.css'
+        src: ['dist/css/init.css', 'src/css/**/*.css'],
+        dest: 'dist/css/init.css'
       },
       js: {
         options: {
           banner: '<%= banner %>\n<%= jqueryCheck %>\n'
         },
         src: ['src/js/**/*.js'],
-        dest: 'dist/js/main.js'
+        dest: 'dist/js/init.js'
       }
     },
     connect: {
@@ -98,9 +98,7 @@ module.exports = function(grunt) {
     },
     csscomb: {
       dist: {
-        files: {
-          'dist/css/style.css': 'dist/css/style.css'
-        }
+        files: 'src/**/*.{css,less}'
       }
     },
     cssflip: {
@@ -123,10 +121,9 @@ module.exports = function(grunt) {
           keepSpecialComments: 0
         },
         src: [
-          'dist/css/*.css',
-          '!*.min.css'
+          'dist/css/init.css'
         ],
-        dest: 'dist/css/style.min.css'
+        dest: 'dist/css/init.min.css'
       }
     },
     express: {
@@ -175,7 +172,7 @@ module.exports = function(grunt) {
           cleancss: true,
         },
         files: {
-          "dist/css/style.css": "src/less/*.less"
+          "dist/css/init.css": "src/less/*.less"
         }
       }
     },
@@ -201,7 +198,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/js/main.min.js': ['<%= concat.js.dest %>']
+          'dist/js/init.min.js': ['<%= concat.js.dest %>']
         }
       }
     },
@@ -212,7 +209,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('assets', ['exec', 'copy']);
-  grunt.registerTask('js', ['jshint', 'concat:js', 'uglify']);
+  grunt.registerTask('js', [/* 'jshint', */ 'concat:js', 'uglify']);
   grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
   grunt.registerTask('static', ['copy', 'imagemin']);
   grunt.registerTask('dist', ['js', 'css', 'static']);
