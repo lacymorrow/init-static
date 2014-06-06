@@ -8,23 +8,7 @@ module.exports = function(grunt) {
           ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
           ' */\n',
     jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') }\n\n',
-    /* EXECUTE BUILD ASSET GRUNT - 
-    Remember: to add new assets install to devDependencies (package.json) and copy list below.
-    You are responsible for keeping assets up to date (e.g. git pull) */
-    exec: {
-      bootstrap: {
-        command: '(cd assets/bootstrap;git pull;rm -f Gruntfile.js;npm install;grunt -f)'
-      }
-    },
     copy: {
-    /* BUILD ASSETS TO COPY */
-      bootstrap: {
-        expand: true,
-        cwd: 'assets/bootstrap/dist/',
-        src: ['**'],
-        dest: 'dist/assets/bootstrap/'
-      },
-    /* END OF BUILD ASSETS */
       app: {
         expand: true,
         cwd: 'src/',
@@ -87,7 +71,7 @@ module.exports = function(grunt) {
           port: 8000,
           base: 'dist/',
           middleware: function(connect, options) {
-          
+
             return [
               require('grunt-contrib-livereload/lib/utils').livereloadSnippet,
               connect.static(options.base)
@@ -208,12 +192,11 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('assets', ['exec', 'copy']);
   grunt.registerTask('js', [/* 'jshint', */ 'concat:js', 'uglify']);
   grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
   grunt.registerTask('static', ['copy', 'imagemin']);
   grunt.registerTask('dist', ['js', 'css', 'static']);
   grunt.registerTask('serve', ['dist','express', 'open', 'watch']);
-  grunt.registerTask('build', ['clean', 'assets','test','dist']);
+  grunt.registerTask('build', ['clean','test','dist']);
   grunt.registerTask('default', ['dist']);
 };
