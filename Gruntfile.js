@@ -7,7 +7,7 @@ module.exports = function(grunt) {
           ' * Copyright 2014-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
           ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
           ' */\n',
-    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') }\n\n',
+    jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Bootstrap requires jQuery\') };\n\n',
     copy: {
       app: {
         expand: true,
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         dist: {
           expand: true,
           flatten: true,
-          src: 'dist/css/init.css',
+          src: 'dist/css/style.css',
           dest: 'dist/css/'
         },
     },
@@ -54,8 +54,8 @@ module.exports = function(grunt) {
         stripBanners: false
       },
       css: {
-        src: ['dist/css/init.css', 'src/css/**/*.css'],
-        dest: 'dist/css/init.css'
+        src: ['dist/css/style.css', 'src/css/**/*.css'],
+        dest: 'dist/css/style.css'
       },
       js: {
         options: {
@@ -105,9 +105,9 @@ module.exports = function(grunt) {
           keepSpecialComments: 0
         },
         src: [
-          'dist/css/init.css'
+          'dist/css/style.css'
         ],
-        dest: 'dist/css/init.min.css'
+        dest: 'dist/css/style.min.css'
       }
     },
     express: {
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
           cleancss: true,
         },
         files: {
-          "dist/css/init.css": "src/less/*.less"
+          "dist/css/style.css": "src/less/*.less"
         }
       }
     },
@@ -197,6 +197,6 @@ module.exports = function(grunt) {
   grunt.registerTask('static', ['copy', 'imagemin']);
   grunt.registerTask('dist', ['js', 'css', 'static']);
   grunt.registerTask('serve', ['dist','express', 'open', 'watch']);
-  grunt.registerTask('build', ['clean','test','dist']);
-  grunt.registerTask('default', ['dist']);
+  grunt.registerTask('build', ['clean','dist']);
+  grunt.registerTask('default', ['build']);
 };

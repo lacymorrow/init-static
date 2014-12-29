@@ -4,6 +4,6 @@
  * Licensed under MIT ()
  */
 
-if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery') }
+if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery') };
 
 
