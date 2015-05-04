@@ -1,8 +1,18 @@
 /*!
  * init-static v0.1.0 (http://lacymorrow.com)
- * Copyright 2014-2014 lacymorrow <me@lacymorrow.com>
+ * Copyright 2014-2015 lacymorrow <me@lacymorrow.com>
  * Licensed under MIT ()
  */
+
+.logo {
+  background: url(../img/logo.png) center center no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:192dpi),only screen and (min-resolution:2dppx),not all {
+  .logo {
+    background: url(../img/logo.png) center center no-repeat;
+  }
+}
 
 body {
   padding-top: 50px;

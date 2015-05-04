@@ -1,6 +1,6 @@
 /*!
  * init-static v0.1.0 (http://lacymorrow.com)
- * Copyright 2014-2014 lacymorrow <me@lacymorrow.com>
+ * Copyright 2014-2015 lacymorrow <me@lacymorrow.com>
  * Licensed under MIT ()
  */
 

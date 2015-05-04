@@ -32,6 +32,12 @@ module.exports = function(grunt) {
         cwd: 'src/html/',
         src: ['**'],
         dest: 'dist/'
+      },
+      img: {
+        expand: true,
+        cwd: 'src/img/',
+        src: ['**'],
+        dest: 'dist/img/'
       }
     },
     autoprefixer: {
@@ -101,7 +107,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           noAdvanced: true, // turn advanced optimizations off until the issue is fixed in clean-css
-          selectorsMergeMode: 'ie8',
+          ie8: true,
           keepSpecialComments: 0
         },
         src: [
@@ -188,15 +194,15 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['<%= jshint.dist %>','src/**/*'],
-      tasks: ['dist']
+      tasks: ['build']
     }
   });
 
   grunt.registerTask('js', [/* 'jshint', */ 'concat:js', 'uglify']);
   grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
-  grunt.registerTask('static', ['copy', 'imagemin']);
+  grunt.registerTask('static', ['copy' /*, 'imagemin' */]);
   grunt.registerTask('dist', ['js', 'css', 'static']);
-  grunt.registerTask('serve', ['dist','express', 'open', 'watch']);
+  grunt.registerTask('serve', ['build','express', 'open', 'watch']);
   grunt.registerTask('build', ['clean','dist']);
   grunt.registerTask('default', ['build']);
 };
