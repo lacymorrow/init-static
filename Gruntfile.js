@@ -15,6 +15,12 @@ module.exports = function(grunt) {
         src: ['app/**'],
         dest: 'dist/'
       },
+      lib: {
+        expand: true,
+        cwd: 'src/lib/',
+        src: ['**'],
+        dest: 'dist/lib/'
+      },
       favicon: {
         expand: true,
         cwd: 'src/img/',
