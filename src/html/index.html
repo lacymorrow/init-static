@@ -19,7 +19,8 @@
     <link href="lib/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="css/style.min.css" rel="stylesheet"> UNCOMMENT FOR PROD -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,26 +31,8 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    @@include('partials/_header.html', {"title": "Long Game"})
+
 
     <div class="container">
 
@@ -61,6 +44,7 @@
     </div><!-- /.container -->
 
 
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -69,5 +53,31 @@
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="lib/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+    <script id="people-template" type="text/x-handlebars-template">
+      {{#each people}}
+        {{> person}}
+      {{/each}}
+    </script>
+     
+    <script id="person-partial" type="text/x-handlebars-template">
+      <div class="person">
+        <h2>{{first_name}} {{last_name}}</h2>
+        <div class="phone">{{phone}}</div>
+        <div class="email"><a href="mailto:{{email}}">{{email}}</a></div>
+        <div class="since">User since {{member_since}}</div>
+      </div>
+    </script>
+     
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var template = Handlebars.compile($("#people-template").html());
+        Handlebars.registerPartial("person", $("#person-partial").html());
+     
+        template(yourData);
+      });
+    </script>
+
   </body>
 </html>

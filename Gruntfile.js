@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  require('time-grunt')(grunt);
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
@@ -33,12 +34,13 @@ module.exports = function(grunt) {
         src: ['**'],
         dest: 'dist/fonts/'
       },
-      html: {
-        expand: true,
-        cwd: 'src/html/',
-        src: ['**'],
-        dest: 'dist/'
-      },
+      // html: {
+      //   expand: true,
+      //   cwd: 'src/html/',
+      //   exclude: 'src/partials'
+      //   src: ['**'],
+      //   dest: 'dist/'
+      // },
       img: {
         expand: true,
         cwd: 'src/img/',
@@ -153,6 +155,18 @@ module.exports = function(grunt) {
             }]
         }
     },
+    includereplace: {
+      dist: {
+        options: {
+          globals: {
+            title: 'Long Game',
+          },
+        },
+        files: [
+          {src: '**/*.html', dest: 'dist/', expand: true, cwd: 'src/html/'},
+        ]
+      }
+    },
     jscs: {
       grunt: {
         src: 'Gruntfile.js'
@@ -217,8 +231,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('js', [/* 'jshint', */ 'concat:js', 'babel', 'uglify']);
   grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
+  grunt.registerTask('html', ['includereplace']);
   grunt.registerTask('static', ['copy' /*, 'imagemin' */]);
-  grunt.registerTask('dist', ['js', 'css', 'static']);
+  grunt.registerTask('dist', ['js', 'css', 'html', 'static']);
   grunt.registerTask('serve', ['build','express', 'open', 'watch']);
   grunt.registerTask('build', ['clean','dist']);
   grunt.registerTask('default', ['build']);
