@@ -57,6 +57,17 @@ module.exports = function(grunt) {
           dest: 'dist/css/'
         },
     },
+    babel: {
+        options: {
+            sourceMap: true,
+            presets: ['es2015']
+        },
+        dist: {
+            files: {
+                'dist/js/init.js': 'dist/js/init.js'
+            }
+        }
+    },
     clean: {
       dist: 'dist/**/*'
     },
@@ -204,7 +215,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('js', [/* 'jshint', */ 'concat:js', 'uglify']);
+  grunt.registerTask('js', [/* 'jshint', */ 'concat:js', 'babel', 'uglify']);
   grunt.registerTask('css', ['less', 'concat:css', 'autoprefixer', 'csscomb', 'cssflip', 'cssmin']);
   grunt.registerTask('static', ['copy' /*, 'imagemin' */]);
   grunt.registerTask('dist', ['js', 'css', 'static']);
