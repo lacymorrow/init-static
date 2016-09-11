@@ -234,7 +234,7 @@ module.exports = function(grunt) {
   grunt.registerTask('html', ['includereplace']);
   grunt.registerTask('static', ['copy' /*, 'imagemin' */]);
   grunt.registerTask('dist', ['js', 'css', 'html', 'static']);
-  grunt.registerTask('serve', ['build','express', 'open', 'watch']);
+  grunt.registerTask('serve', [/* 'build', */ 'express', 'open', 'watch']);
   grunt.registerTask('build', ['clean','dist']);
   grunt.registerTask('default', ['build']);
 };

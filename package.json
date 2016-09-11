@@ -10,6 +10,9 @@
       "email": "me@lacymorrow.com"
     }
   ],
+  "scripts": {
+    "start": "grunt build; grunt serve"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lacymorrow/init-static.git"
