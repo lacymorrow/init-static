@@ -11,7 +11,7 @@
     }
   ],
   "scripts": {
-    "start": "grunt build; grunt serve"
+    "start": "grunt serve"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "grunt": "^0.4.4",
     "grunt-autoprefixer": "^0.7.2",
     "grunt-babel": "^6.0.0",
+    "grunt-config": "^1.0.0",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-concat": "^0.4.0",
     "grunt-contrib-copy": "^0.5.0",
