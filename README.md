@@ -6,7 +6,7 @@ This is a dead-simple setup for developing static HTML or dynamic PHP websites u
 
 ### Getting Started
 
-Download or clone the repo. Using the terminal, `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies. Next run `grunt build` to update Bootstrap to the latest version and build the initial project with all assets. You only need to run `grunt build` to build project dependencies.
+Download or clone the repo. Using the terminal, `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies. Next run `grunt build` (you may need to `npm install -g grunt-cli`) to update Bootstrap to the latest version and build the initial project with all assets. You only need to run `grunt build` to build project dependencies.
 
 `grunt` will build the website and output all files to the `dist` directory.
 
