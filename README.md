@@ -1,18 +1,32 @@
 # Init-Static
 
-An optimized package and gruntfile for rapidly spooling up a static Bootstrap website.
+_*An optimized package and gruntfile for rapidly spooling up a static Bootstrap website.*_
 
 This is a dead-simple setup for developing static HTML or dynamic PHP websites using Bootstrap, Grunt and Livereload.
 
-### Getting Started
+## Installation
 
-Download or clone the repo. Using the terminal, `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies. Next run `grunt build` (you may need to `npm install -g grunt-cli`) to update Bootstrap to the latest version and build the initial project with all assets. You only need to run `grunt build` to build project dependencies.
 
-`grunt` will build the website and output all files to the `dist` directory.
+ ```bash
+ # Download or clone the repo. 
+ git clone https://github.com/lacymorrow/init-static.git
+
+ # `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies. 
+ cd init-static && npm install;
+ ```
+
+ 
+### Run `grunt build` to build and update Bootstrap to the latest version  (you may need to `npm install -g grunt-cli` if you have never used Grunt) and build the initial project with all assets. You only need to run `grunt build` to build project dependencies.
+
+
+
+## Building
+
+ * `grunt` will build the website and output all files to the `dist` directory.
 
 `grunt serve` will build the website and open the `dist` folder in the browser using the grunt-express plugin. It will watch and persist your session as you make changes and save source files using Livereload.
 
-#### Grunt Tasks
+### Grunt Tasks
 
  * Assets have `git pull; npm install; grunt` run to build them and are copied to `dist/assets`.
 
