@@ -8,23 +8,30 @@ This is a dead-simple setup for developing static HTML or dynamic PHP websites u
 
 
  ```bash
+ # Install grunt if you haven't already
+ npm install -g grunt-cli
+ 
  # Download or clone the repo. 
  git clone https://github.com/lacymorrow/init-static.git
 
- # `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies. 
+ # `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies.  
  cd init-static && npm install;
- ```
-
  
-### Run `grunt build` to build and update Bootstrap to the latest version  (you may need to `npm install -g grunt-cli` if you have never used Grunt) and build the initial project with all assets. You only need to run `grunt build` to build project dependencies.
-
+ # Build and update Bootstrap to the latest version and build the initial project with all assets.
+ # You only need to run `grunt build` to build project dependencies. (optional)
+ grunt build
+ 
+ # Build project
+ ```
 
 
 ## Building
 
  * `grunt` will build the website and output all files to the `dist` directory.
+ 
+ * `grunt build` updates Bootstrap and builds dependencies
 
-`grunt serve` will build the website and open the `dist` folder in the browser using the grunt-express plugin. It will watch and persist your session as you make changes and save source files using Livereload.
+ * `grunt serve` will build the website and open the `dist` folder in the browser using the grunt-express plugin. It will watch and persist your session as you make changes and save source files using Livereload. _Alias: `grunt watch`_
 
 ### Grunt Tasks
 
